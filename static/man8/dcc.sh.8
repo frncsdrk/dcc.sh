@@ -1,0 +1,43 @@
+.\" Manpage for dcc.sh
+.\" Contact frncsdrk@protonmail.com
+.TH man 8 "04.07.2019" "0.15.1" "dcc.sh man page"
+.SH NAME
+dcc.sh \- docker compose companion
+.SH SYNOPSIS
+dcc.sh [-h|--help] [-v|--version] [-d|--debug]
+
+dcc.sh up|upgrade
+.SH DESCRIPTION
+dcc.sh or docker compose companion is a bash tool that simplifies your work
+with a docker-compose environment spanning over multiple directories
+.SH OPTIONS
+-d|--debug
+        enable debug mode
+
+-h|--help
+        show this message
+
+-u|--upgrade
+        upgrade
+
+-V|--version
+        version
+
+up|upgrade
+        upgrade dcc.sh
+
+.SH EXAMPLES
+dcc.sh -V
+        display version
+
+dcc.sh -h
+        display this message
+
+dcc.sh upgrade
+        upgrade dcc.sh to latest version
+.SH SEE ALSO
+https://github.com/frncsdrk/dcc.sh
+.SH BUGS
+
+.SH AUTHOR
+frncsdrk (frncsdrk@protonmail.com)
