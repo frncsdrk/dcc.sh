@@ -3,8 +3,10 @@
 # main
 
 restart_env() {
-  echo "restart env"
-  echo "$@"
+  if [ ! -z "$DEBUG" ]; then
+    echo "restart_env"
+    echo "$@"
+  fi
 
   if [ "$3" == "--clean" ] || [ "$3" == "--clean" ]; then
     case_conditional=$2
@@ -22,6 +24,11 @@ restart_env() {
 }
 
 pass_args_dc() {
+  if [ ! -z "$DEBUG" ]; then
+    echo "pass_args_dc"
+    echo "$@"
+  fi
+
   cd "$1"
   docker-compose "${@:2}"
 }

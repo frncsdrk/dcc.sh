@@ -56,7 +56,7 @@ Examples:
 
 ### automatically
 
-Run `curl https://raw.githubusercontent.com/frncsdrk/dcc.sh/master/download.sh | bash`
+Run `curl https://raw.githubusercontent.com/frncsdrk/dcc.sh/master/download.sh -sSf | sudo bash`
 
 ### manually
 
