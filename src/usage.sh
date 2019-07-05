@@ -1,10 +1,9 @@
-# dcc.sh
+#!/usr/bin/env bash
+#
+# usage
 
-> docker compose companion
-
-## Usage
-
-```
+usage() {
+  cat << EOF
 dcc.sh
 
 Usage:
@@ -48,21 +47,5 @@ Examples:
   dcc.sh self upgrade
           upgrade dcc.sh to latest version
 
-```
-
-## Bugs
-
-## Installation
-
-### automatically
-
-Run `curl https://raw.githubusercontent.com/frncsdrk/dcc.sh/master/download.sh | bash`
-
-### manually
-
-- clone the repo
-- run `./setup.sh i` (requires `sudo`)
-
-## License
-
-[MIT](https://github.com/frncsdrk/dcc.sh/blob/master/LICENSE) (c) frncsdrk 2019
+EOF
+}
