@@ -23,10 +23,10 @@ Options:
   -V|--version
           version
 
-  [any docker-compose command]
+  <directory> [any docker-compose command]
           execute docker compose command
 
-  restart [-c|--clean]
+  <directory> restart [-c|--clean]
           restart docker compose
 
   self
