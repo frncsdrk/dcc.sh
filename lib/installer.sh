@@ -27,8 +27,19 @@ uninstall() {
 }
 
 upgrade() {
-  printf '%s\n' "Upgrading supa.sh to latest version"
+  local tmp_script_location="/tmp/dcc-download.sh"
+
+  printf '%s\n' "Upgrading dcc.sh to latest version"
+
+  if [[ ! -d /tmp ]]; then
+    mkdir /tmp
+  fi
+
+  printf '%s\n' "Creating temporary supa.sh download script as ${tmp_script_location}"
+  cp "${INSTALL_DIRECTORY_PATH}/${INSTALLABLE_NAME}/download.sh" "${tmp_script_location}"
 
   uninstall
-  source "./download.sh"
+  source "${tmp_script_location}"
+
+  rm "${tmp_script_location}"
 }
