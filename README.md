@@ -52,6 +52,8 @@ Examples:
 
 ## Bugs
 
+none
+
 ## Installation
 
 ### automatically
