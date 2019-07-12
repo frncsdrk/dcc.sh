@@ -2,6 +2,16 @@
 #
 # installer
 
+# ensure linux or darwin
+check_os() {
+  if [[ "$OSTYPE" == "linux-gnu" ]] || [[ "$OSTYPE" == "linux-musl" ]] || [[ "$OSTYPE" == "darwin" ]] ; then
+    readonly _dir=$(dirname "$(readlink -f "$0" || echo "$(echo "$0" | sed -e 's,\\,/,g')")")
+  else
+    printf '%s\n' "Unsupported system"
+    exit 1
+  fi
+}
+
 uninstall_manpage() {
   printf '%s\n' "Remove man page from /usr/local/man/man8"
 
