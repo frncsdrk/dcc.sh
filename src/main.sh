@@ -34,7 +34,7 @@ pass_args_dc() {
   if [ ! -z "${TARGET}" ]; then
     for directory in "$(cat ${current_dir}/.dcc/${TARGET})"; do
       cd "${directory}"
-      docker-compose "${@:2}"
+      docker-compose "${@:3}"
       cd "${current_dir}"
     done
   else
