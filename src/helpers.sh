@@ -22,6 +22,10 @@ get_args() {
         usage
         exit 0
         ;;
+      -t|--target)
+        TARGET=$2
+        shift 2
+        ;;
       -V|--version)
         printf '%s\n' "$VERSION"
         exit 0

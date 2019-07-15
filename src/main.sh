@@ -24,13 +24,24 @@ restart_env() {
 }
 
 pass_args_dc() {
-  if [ ! -z "$DEBUG" ]; then
+  if [ ! -z "${DEBUG}" ]; then
     echo "pass_args_dc"
     echo "$@"
   fi
 
-  cd "$1"
-  docker-compose "${@:2}"
+  local current_dir="${PWD}"
+
+  if [ ! -z "${TARGET}" ]; then
+    for directory in "$(cat ${current_dir}/.dcc/${TARGET})"; do
+      cd "${directory}"
+      docker-compose "${@:2}"
+      cd "${current_dir}"
+    done
+  else
+    # use directory
+    cd "$1"
+    docker-compose "${@:2}"
+  fi
 }
 
 main() {

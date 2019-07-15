@@ -8,7 +8,7 @@
 dcc.sh
 
 Usage:
-  dcc.sh <directory> [-h|--help] [-V|--version] [-D|--debug]
+  dcc.sh <directory|[-t|--target <target file name>]> [-h|--help] [-V|--version] [-D|--debug]
   [any docker-compose command] [restart] [self]
 
   dcc.sh self
@@ -19,6 +19,9 @@ Options:
 
   -h|--help
           show this message
+
+  -t|--target
+          pass target
 
   -V|--version
           version
@@ -39,6 +42,9 @@ Examples:
   dcc.sh -h
           display this message
 
+  dcc.sh -t all ps
+          execute 'docker-compose ps' in directories listed in target file 'all'
+
   dcc.sh service/ ps
           execute 'docker-compose ps' in service directory
 
@@ -48,6 +54,17 @@ Examples:
   dcc.sh self upgrade
           upgrade dcc.sh to latest version
 
+```
+
+### Target files
+
+You can create text files in the directory `.dcc/`, containing a list of directories one on each line.
+The targets name equals the name of the target file.
+
+example:
+```
+service1/
+service2/
 ```
 
 ## Bugs

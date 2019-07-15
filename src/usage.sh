@@ -7,7 +7,7 @@ usage() {
 dcc.sh
 
 Usage:
-  dcc.sh <directory> [-h|--help] [-V|--version] [-D|--debug]
+  dcc.sh <directory|[-t|--target <target file name>]> [-h|--help] [-V|--version] [-D|--debug]
   [any docker-compose command] [restart] [self]
 
   dcc.sh self
@@ -18,6 +18,9 @@ Options:
 
   -h|--help
           show this message
+
+  -t|--target
+          pass target
 
   -V|--version
           version
@@ -37,6 +40,9 @@ Examples:
 
   dcc.sh -h
           display this message
+
+  dcc.sh -t all ps
+          execute 'docker-compose ps' in directories listed in target file 'all'
 
   dcc.sh service/ ps
           execute 'docker-compose ps' in service directory
