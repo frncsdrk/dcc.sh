@@ -24,18 +24,24 @@ restart_env() {
 }
 
 pass_args_dc() {
-  if [ ! -z "${DEBUG}" ]; then
+  if [[ ! -z "${DEBUG}" ]]; then
     echo "pass_args_dc"
     echo "$@"
   fi
 
   local current_dir="${PWD}"
 
-  if [ ! -z "${TARGET}" ]; then
-    for directory in "$(cat ${current_dir}/.dcc/${TARGET})"; do
-      cd "${directory}"
-      docker-compose "${@:3}"
-      cd "${current_dir}"
+  if [[ ! -z "${TARGET}" ]]; then
+    printf '%s\n' "target: ${TARGET}"
+    for directory in $(cat ${current_dir}/.dcc/${TARGET}); do
+      printf '%s\n' "dir: ${directory}"
+      if [[ -d ${directory} ]]; then
+        cd "${current_dir}/${directory}"
+
+        docker-compose "${@:1}" # 1 b/c shift in option
+
+        cd "${current_dir}"
+      fi
     done
   else
     # use directory

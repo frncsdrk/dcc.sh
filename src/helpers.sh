@@ -66,7 +66,11 @@ get_args() {
         POSITIONAL+=("$1")
         # shift
 
-        local cmd_key=$2
+        if [[ ! -z "${TARGET}" ]]; then
+          local cmd_key=$3
+        else
+          local cmd_key=$3
+        fi
 
         case $cmd_key in
           restart)
