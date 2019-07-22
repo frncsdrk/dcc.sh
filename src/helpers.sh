@@ -69,7 +69,7 @@ get_args() {
         if [[ ! -z "${TARGET}" ]]; then
           local cmd_key=$3
         else
-          local cmd_key=$3
+          local cmd_key=$2
         fi
 
         case $cmd_key in
