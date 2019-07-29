@@ -84,4 +84,4 @@ Run `curl https://raw.githubusercontent.com/frncsdrk/dcc.sh/master/download.sh -
 
 ## License
 
-[MIT](https://github.com/frncsdrk/dcc.sh/blob/master/LICENSE) (c) frncsdrk 2019
+[MIT](https://github.com/frncsdrk/dcc.sh/blob/master/LICENSE) (c) frncsdrk 2019 - present
