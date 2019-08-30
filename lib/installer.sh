@@ -1,12 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # installer
 
 # ensure linux or darwin
 check_os() {
-  if [[ "$OSTYPE" == "linux-gnu" ]] || [[ "$OSTYPE" == "linux-musl" ]] || [[ "$OSTYPE" == "darwin" ]] ; then
-    readonly _dir=$(dirname "$(readlink -f "$0" || echo "$(echo "$0" | sed -e 's,\\,/,g')")")
-  else
+  OS=$(uname -o)
+  if [ "$OS" != "GNU/Linux" ] && [ "$OS" != "Darwin" ] ; then #  || [ "$OS" = "linux-musl" ]
+    # readonly _dir=$(dirname "$(readlink -f "$0" || echo "$(echo "$0" | sed -e 's,\\,/,g')")")
+  # else
     printf '%s\n' "Unsupported system"
     exit 1
   fi
@@ -15,33 +16,33 @@ check_os() {
 uninstall_manpage() {
   printf '%s\n' "Remove man page from /usr/local/man/man8"
 
-  if [[ -e "/usr/local/man/man8/${INSTALLABLE_NAME}.8.gz" ]]; then
-    rm /usr/local/man/man8/${INSTALLABLE_NAME}.8.gz
+  if [ -e "/usr/local/man/man8/${INSTALLABLE_NAME}.8.gz" ]; then
+    rm "/usr/local/man/man8/${INSTALLABLE_NAME}.8.gz"
   fi
 }
 
 uninstall() {
   printf '%s\n' "Remove installation"
 
-  if [[ -d "${INSTALL_DIRECTORY_PATH}/${INSTALLABLE_NAME}" ]]; then
-    rm -r "${INSTALL_DIRECTORY_PATH}/${INSTALLABLE_NAME}"
+  if [ -d "${INSTALL_DIRECTORY_PATH}/${INSTALLABLE_NAME}" ]; then
+    rm -r "${INSTALL_DIRECTORY_PATH:?}/${INSTALLABLE_NAME:?}"
   fi
 
   printf '%s\n' "Remove symbolic link from /usr/local/bin"
 
-  if [[ -L "/usr/local/bin/${INSTALLABLE_NAME}" ]]; then
-    unlink /usr/local/bin/${INSTALLABLE_NAME}
+  if [ -L "/usr/local/bin/${INSTALLABLE_NAME}" ]; then
+    unlink "/usr/local/bin/${INSTALLABLE_NAME}"
   fi
 
   uninstall_manpage
 }
 
 upgrade() {
-  local tmp_script_location="/tmp/dcc-download.sh"
+  tmp_script_location="/tmp/dcc-download.sh"
 
   printf '%s\n' "Upgrading dcc.sh to latest version"
 
-  if [[ ! -d /tmp ]]; then
+  if [ ! -d /tmp ]; then
     mkdir /tmp
   fi
 
@@ -49,7 +50,7 @@ upgrade() {
   cp "${INSTALL_DIRECTORY_PATH}/${INSTALLABLE_NAME}/download.sh" "${tmp_script_location}"
 
   uninstall
-  source "${tmp_script_location}"
+  . "${tmp_script_location}"
 
   rm "${tmp_script_location}"
 }
