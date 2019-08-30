@@ -1,19 +1,19 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # helpers
 
 get_args() {
-  if [[ -z $1 ]]; then
+  if [ -z "$1" ]; then
     usage
     exit 0
   fi
 
-  local POSITIONAL=()
-  while [[ $# -gt 0 ]]
+  # local POSITIONAL=()
+  while [ "$#" -gt 0 ]
   do
-    local key=$1
+    key="$1"
 
-    case $key in
+    case "$key" in
       -D|--debug)
         DEBUG=1
         shift
@@ -23,7 +23,7 @@ get_args() {
         exit 0
         ;;
       -t|--target)
-        TARGET=$2
+        TARGET="$2"
         shift 2
         ;;
       -V|--version)
@@ -31,14 +31,14 @@ get_args() {
         exit 0
         ;;
       self)
-        if [[ -z $2 ]]; then
+        if [ -z "$2" ]; then
           self_usage
           exit 0
         fi
 
-        local self_key=$2
+        self_key="$2"
 
-        case $self_key in
+        case "$self_key" in
           -h|--help)
             self_usage
             exit 0
@@ -60,19 +60,19 @@ get_args() {
         ;;
       *)
         # get environment directory
-        if [[ ! -z $1 ]]; then
+        if [ -n "$1" ]; then
           ENVIRONMENT_DIR="$1"
         fi
-        POSITIONAL+=("$1")
+        # POSITIONAL+=("$1")
         # shift
 
-        if [[ ! -z "${TARGET}" ]]; then
-          local cmd_key=$3
+        if [ -n "${TARGET}" ]; then
+          cmd_key="$3"
         else
-          local cmd_key=$2
+          cmd_key="$2"
         fi
 
-        case $cmd_key in
+        case "$cmd_key" in
           restart)
             restart_env "$@"
             exit 0
@@ -84,5 +84,5 @@ get_args() {
         ;;
     esac
   done
-  set -- "${POSITIONAL[@]}"
+  # set -- "${POSITIONAL[@]}"
 }

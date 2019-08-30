@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # installer
 
 # ensure linux or darwin
 check_os() {
   OS=$(uname -o)
-  if [ "$OS" != "GNU/Linux" ] && [ "$OS" != "Darwin" ] ; then #  || [ "$OS" = "linux-musl" ]
+  if [ "$OS" != "GNU/Linux" ] && [ "$OS" != "Darwin" ] ; then #  && [ "$OS" != "linux-musl" ]
     # readonly _dir=$(dirname "$(readlink -f "$0" || echo "$(echo "$0" | sed -e 's,\\,/,g')")")
   # else
     printf '%s\n' "Unsupported system"
