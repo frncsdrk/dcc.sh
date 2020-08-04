@@ -76,7 +76,7 @@ install_manpage() {
     if [[ ! -e "/usr/local/man/man8/${INSTALLABLE_NAME}.8.gz" ]] ; then
       mkdir -p /usr/local/man/man8
       cp "${_dir}/static/man8/${INSTALLABLE_NAME}.8" /usr/local/man/man8
-      gzip /usr/local/man/man8/${INSTALLABLE_NAME}.8
+      gzip "/usr/local/man/man8/${INSTALLABLE_NAME}.8"
     fi
   fi
 }
