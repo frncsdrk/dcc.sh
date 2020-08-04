@@ -45,7 +45,7 @@ upgrade() {
     mkdir /tmp
   fi
 
-  printf '%s\n' "Creating temporary supa.sh download script as ${tmp_script_location}"
+  printf '%s\n' "Creating temporary dcc.sh download script as ${tmp_script_location}"
   cp "${INSTALL_DIRECTORY_PATH}/${INSTALLABLE_NAME}/download.sh" "${tmp_script_location}"
 
   uninstall

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# supa - *S*erver *Up*date *A*
+# dcc - *D*ocker *C*ompose *C*ompanion
 
 # call parameters
 __script_params=("$@")

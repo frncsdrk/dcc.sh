@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# setup script for supa.sh
+# setup script for dcc.sh
 
 source "./src/settings.sh"
 source "./lib/installer.sh"
@@ -14,10 +14,10 @@ Usage:
 
 Commands:
   i|install
-          install supa.sh and create its manpage
+          install dcc.sh and create its manpage
 
   r|remove
-          uninstall supa.sh and remove its manpage
+          uninstall dcc.sh and remove its manpage
 
   upgrade
           update manpage
